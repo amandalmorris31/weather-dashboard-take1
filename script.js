@@ -38,15 +38,16 @@
 //code
 //need to get the data of user input (city)
 
-var city="Austin";
+var city="Denver";
 
 var apiKey="5bf8eae819934207415529c4c325451c";
 var lon;
 var lat;
 
-oneday(city);
 
-function oneday(city){
+oneDay(city);
+
+function oneDay(city){
     //1. div that displays today's weather of city from userinput with current data at top (temp, humidity, wind, and UV index) 
 
 var queryURL= "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+apiKey;
@@ -59,17 +60,29 @@ $.ajax({
   }).then(function(response) {
       
     //A. get the data (console.log it) 
-
-
-  
     console.log(response);
+    
+    
     // (temp, 
     console.log(response.main.temp)
+    var tempNum=(((response.main.temp-273.15)*1.8)+32);
+    console.log("Temperature: "+tempNum.toFixed(2)+" \u00B0"+"F");
+    //https://www.w3schools.com/howto/howto_js_temperature_converter.asp
+
+    var todayTemp="Temperature: "+tempNum.toFixed(2)+" \u00B0"+"F";
+    console.log(todayTemp);
+
     //humidity,
      console.log(response.main.humidity)
-    //wind, and 
+    var humidity="Humidity: "+response.main.humidity+"%";
+    console.log(humidity);
+
+    //wind speed, and 
     console.log(response.wind.speed)
-    //UV index) 
+    var windSpeed="Wind Speed: "+response.wind.speed+" MPH";
+    console.log(windSpeed);
+
+    //UV index
         //lon and lat
         console.log(response.coord.lon)
         lon=response.coord.lon;
@@ -85,6 +98,9 @@ $.ajax({
       }).then(function(uvobj) {
         console.log(uvobj);
         console.log(uvobj.value);
+
+      var uvIndex="UV Index: "+(uvobj.value);
+      console.log(uvIndex);
           //B.dynamically create the city in front end
   
       });
@@ -97,10 +113,44 @@ $.ajax({
 
 
 
+//---------------------------------------
+// FIVE day function
 
+// console.log(city);
+// console.log(apiKey)
 
+var lon;
+var lat;
 
+fiveDay(city);
 
+function fiveDay(city){
+    //1. div that displays 5 day forecast of city from userinput with data  (date, icon, temp, humidity) 
+
+var queryURL= "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid="+apiKey;
+//"api.openweathermap.org/data/2.5/forecast?q={city name}&appid={5bf8eae819934207415529c4c325451c}";
+console.log(queryURL);
+
+$.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+      
+    //A. get the data (console.log it) 
+    console.log(response);
+    // console.log(response.city.name);
+    console.log(response.list[0].main.temp);
+    console.log(response.list[0].main.humidity);
+
+    //the following is the icon
+    console.log(response.list[0].weather[0].icon)
+      
+
+        //B.dynamically create the city in front end
+
+  });
+
+}
 
 
     //C. dynamically create the layout of the page
@@ -130,4 +180,28 @@ $.ajax({
 
     //C. dynamically create the layout of the page
 
-    //D. append to html
+
+
+
+var d1=$("<div>");
+d1.attr("class", "row col-12");
+
+var d2=$("<div>");
+d2.attr("class", "aside col-3");
+
+var d3=$("<div>");
+d3.attr("class", "section col-9");
+
+var d4=$("<div>");
+d4.attr("class", "section col-9");
+
+
+
+//append to html
+$(".container").append(d1);
+$(d1).append(d2);
+$(d1).append(d3);
+$(d3).append(d4);
+// $(d3).append(span);
+// $(d3).append(textarea);
+// $(d3).append(button);

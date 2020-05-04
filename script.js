@@ -68,19 +68,25 @@ $.ajax({
     var tempNum=(((response.main.temp-273.15)*1.8)+32);
     console.log("Temperature: "+tempNum.toFixed(2)+" \u00B0"+"F");
     //https://www.w3schools.com/howto/howto_js_temperature_converter.asp
-
     var todayTemp="Temperature: "+tempNum.toFixed(2)+" \u00B0"+"F";
-    console.log(todayTemp);
+    $("#temp").text(todayTemp);
+
+
+
+    // var todayTemp="Temperature: "+tempNum.toFixed(2)+" \u00B0"+"F";
+    // console.log(todayTemp);
 
     //humidity,
-     console.log(response.main.humidity)
+    console.log(response.main.humidity)
     var humidity="Humidity: "+response.main.humidity+"%";
     console.log(humidity);
+    $("#humidity").text(humidity);
 
     //wind speed, and 
     console.log(response.wind.speed)
     var windSpeed="Wind Speed: "+response.wind.speed+" MPH";
     console.log(windSpeed);
+    $("#wind-speed").text(windSpeed);
 
     //UV index
         //lon and lat
@@ -95,12 +101,14 @@ $.ajax({
     $.ajax({
         url: uvURL,
         method: "GET"
-      }).then(function(uvobj) {
-        console.log(uvobj);
-        console.log(uvobj.value);
+      }).then(function(uvObj) {
+        console.log(uvObj);
+        console.log(typeof uvObj.value);
 
-      var uvIndex="UV Index: "+(uvobj.value);
-      console.log(uvIndex);
+      var uvColor=determineUvColor(Math.round(uvObj.value));
+      var uvIndex=(uvObj.value);
+      console.log(uvIndex, uvColor);
+      $("#uv-value").css("background-color",uvColor).text(uvIndex);
           //B.dynamically create the city in front end
   
       });
@@ -111,7 +119,18 @@ $.ajax({
 
 }
 
-
+function determineUvColor(uvNum){
+    switch(true) {
+        case uvNum <= 2:
+          return "green";
+        case uvNum >=3 && uvNum <=7:
+          return "yellow";
+        case uvNum >=8 && uvNum <=10:
+          return "red";
+        default:
+          return "purple";
+      }
+}
 
 //---------------------------------------
 // FIVE day function
@@ -119,8 +138,7 @@ $.ajax({
 // console.log(city);
 // console.log(apiKey)
 
-var lon;
-var lat;
+
 
 fiveDay(city);
 
@@ -137,7 +155,7 @@ $.ajax({
   }).then(function(response) {
       
     //A. get the data (console.log it) 
-    console.log(response);
+    console.log('RESPONSE',`${response}blah`);
     // console.log(response.city.name);
     console.log(response.list[0].main.temp);
     console.log(response.list[0].main.humidity);
@@ -179,6 +197,21 @@ $.ajax({
 
 
     //C. dynamically create the layout of the page
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

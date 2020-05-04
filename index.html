@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Test</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
+    <link rel="stylesheet"href="./cityStyle.css"
+  </head>
 <body>
 <div class="container-fluid col-12">
     <div class="header" style="color:bisque; background-color: darkcyan; text-align: center; padding:20px;">
@@ -19,11 +20,9 @@
                 <!-- this is where the search textarea will go, plus cities in local storage (search history) listed beneath -->
                 <div class="cities col-3">
                   <form id="city-form" method="POST">
-                    <label for="city-text">Add a city:</label>
+                    <!-- <label for="city-text">Add a city:</label> -->
                     <input type="text" placeholder="Enter city" name="city-text" id="city-text" />
                   </form>
-                  <!-- <p>City Count: <span id="city-count">0</span></p> -->
-                  
                   <ul id="city-list"></ul>
                 </div>
         <!-- </div> -->
@@ -32,10 +31,10 @@
                 <!-- this is where the city from local storage will display with data from openweathermap
                 with today's info -->
                 <h2>Main area with city displayed</h2>
-                <p>Temp:</p>
-                <p>Humidity:</p>
-                <p>Wind Speed:</p>
-                <p>UV Index:</p>
+                <p id="temp">Temperature:</p>
+                <p id="humidity">Humidity:</p>
+                <p id="wind-speed">Wind Speed:</p>
+                <div id="uv-index">UV Index:<p id="uv-value"></p></div>
             
             <div class="section col-9">
             <!-- this has 5 cards that display 5 days of forecast weather data -->
@@ -46,7 +45,7 @@
                   <div class="card h-100 text-white bg-info">
                     <div class="card-body">
                       <h5 class="card-title">Date 1</h5>
-                      <p class="card-text">This is a longer card with supporting text below. 
+                      <p class="card-text">This is text. 
                       </p>
                     </div>
                   </div>
@@ -63,7 +62,7 @@
                   <div class="card h-100 text-white bg-info">
                     <div class="card-body">
                       <h5 class="card-title">Date 3</h5>
-                      <p class="card-text">This is a longer card with supporting text below.</p>
+                      <p class="card-text">This is text.</p>
                     </div>
                   </div>
                 </div>
@@ -71,7 +70,7 @@
                   <div class="card h-100 text-white bg-info">
                     <div class="card-body">
                       <h5 class="card-title">Date 4</h5>
-                      <p class="card-text">This is a longer card with supporting text belo. 
+                      <p class="card-text">This is text. 
                       </p>
                     </div>
                   </div>
@@ -100,8 +99,8 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-<script src="script.js"></script>
-<script src="/Desktop/Boot-camp/HOMEWORK/localStorage.js"></script>
+<script src="./script.js"></script>
+<script src="./city-list.js"></script>
 
     
 </body>

@@ -10,7 +10,7 @@ init();
 function renderCities() {
   // Clear cityList element and update cityCountSpan
   cityList.innerHTML = "";
-  cityCountSpan.textContent = cities.length;
+  //cityCountSpan.textContent = cities.length;
 
   // Render a new li for each city
   for (var i = 0; i < cities.length; i++) {

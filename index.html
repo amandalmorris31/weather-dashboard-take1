@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet"href="./styles/cityStyle.css"
+    
+    <link rel="stylesheet" href="./styles/cityStyle.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   </head>
 <body>
 <div class="container-fluid col-12">
@@ -34,55 +35,15 @@
                 <p id="temp">Temperature:</p>
                 <p id="humidity">Humidity:</p>
                 <p id="wind-speed">Wind Speed:</p>
-                <div id="uv-index">UV Index:<p id="uv-value"></p></div>
+                <div id="uv-index">UV Index: <span id="uv-value"></span></div>
             
             <div class="section col-9">
             <!-- this has 5 cards that display 5 days of forecast weather data -->
             <h2>5 days of weather</h2>
 
-            <div class="row row-cols-1 row-cols-md-5">
-                <div class="col mb-2">
-                  <div class="card h-100 text-white bg-info">
-                    <div class="card-body">
-                      <h5 class="card-title">Date 1</h5>
-                      <p class="card-text">This is text. 
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col mb-2">
-                  <div class="card h-100 text-white bg-info">
-                    <div class="card-body">
-                      <h5 class="card-title">Date 2</h5>
-                      <p class="card-text">This is a short card.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col mb-2">
-                  <div class="card h-100 text-white bg-info">
-                    <div class="card-body">
-                      <h5 class="card-title">Date 3</h5>
-                      <p class="card-text">This is text.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col mb-2">
-                  <div class="card h-100 text-white bg-info">
-                    <div class="card-body">
-                      <h5 class="card-title">Date 4</h5>
-                      <p class="card-text">This is text. 
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col mb-2">
-                    <div class="card h-100 text-white bg-info">
-                      <div class="card-body">
-                        <h5 class="card-title">Date 5</h5>
-                        <p class="card-text">This is a short card.</p>
-                      </div>
-                    </div>
-                  </div>
+            <div class="row row-cols-1 row-cols-md-5" id="fiveday">
+                
+      
 
               </div>
 
@@ -98,9 +59,9 @@
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-<script src="./script/script.js"></script>
 <script src="./script/city-list.js"></script>
+<script src="./script/script.js"></script>
+
 
     
 </body>

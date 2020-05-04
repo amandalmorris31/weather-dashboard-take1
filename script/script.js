@@ -153,18 +153,63 @@ $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-      
-    //A. get the data (console.log it) 
-    console.log('RESPONSE',`${response}blah`);
-    // console.log(response.city.name);
-    console.log(response.list[0].main.temp);
-    console.log(response.list[0].main.humidity);
 
-    //the following is the icon
-    console.log(response.list[0].weather[0].icon)
+    // <div class="col mb-2">
+    //     <div class="card h-100 text-white bg-info">
+    //         <div class="card-body">
+    //           <h5 class="card-title">Date 1</h5>
+    //           <p class="card-text">This is text. </p>
+    //         </div>
+    //     </div>
+    // </div>
+     
+    // //A. get the data (console.log it) 
+     //     //B.dynamically create the city in front end
+    for (var i = 0; i < 5; i++) {
+      var d1=$("<div>");
+      //<div></div>
+      d1.attr("class","col mb-2");
+       //<div class="col mb-2"></div>
       
+      var d2=$("<div>");
+      //<div></div>
+      d2.attr("class","card-body");
 
-        //B.dynamically create the city in front end
+
+      var d3=$("<div>");
+      //<div></div>
+      d3.attr("class", "card-body");
+
+
+      var h5=$("<h5>");
+      //<h5></h5>
+
+
+      var p=$("<p>");
+      //<p></p>
+
+      //append it together
+      d1.append(d2);
+      d2.append(d3);
+      d3.append(h5);
+      d3.append(p);
+
+      //append via html (#fiveday)
+      $("#fiveday").append(d1);
+
+      //date
+      console.log(response.list[i*8].dt_txt);
+      //icon  // //the following is the icon
+      console.log(response.list[i*8].weather[0].icon)
+      //temp
+      console.log(response.list[i*8].main.temp)
+      //humidty
+      console.log(response.list[i*8].main.humidity)
+    }
+    
+   
+
+   
 
   });
 
